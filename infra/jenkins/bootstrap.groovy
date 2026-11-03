@@ -9,7 +9,8 @@ if (!(jenkins.securityRealm instanceof HudsonPrivateSecurityRealm)) {
     realm.createAccount('emaad', new File('/run/secrets/jenkins-admin-password').text.trim())
     jenkins.setSecurityRealm(realm)
     def authorization = new FullControlOnceLoggedInAuthorizationStrategy()
-    authorization.setAllowAnonymousRead(false)
+    // Localhost-only lab: permit viewing results; all writes require the local account.
+    authorization.setAllowAnonymousRead(true)
     jenkins.setAuthorizationStrategy(authorization)
 }
 jenkins.setNumExecutors(1)

@@ -3,3 +3,5 @@ target/
 .secrets/
 *.log
 .env
+__pycache__/
+source-package.zip

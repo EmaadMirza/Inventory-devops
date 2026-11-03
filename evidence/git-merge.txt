@@ -1,0 +1,5 @@
+*   e7dc7ea Merge tested low-stock filtering feature
+|\  
+| * 8ae847a Add low-stock product filtering with HTTP regression test
+|/  
+* a783f65 Prepare Mini Inventory API and sequential DevOps infrastructure

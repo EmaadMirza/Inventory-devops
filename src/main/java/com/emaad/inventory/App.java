@@ -22,7 +22,14 @@ public final class App {
                     if (!method.equals("GET")) { send(exchange,405,Map.of("error","Use GET")); return; }
                     send(exchange,200,Map.of("status","UP","instance",System.getenv().getOrDefault("HOSTNAME","local")));
                 } else if (path.equals("/products")) {
-                    if (method.equals("GET")) send(exchange,200,inventory.list());
+                    if (method.equals("GET")) {
+                        String query = exchange.getRequestURI().getQuery();
+                        if (query == null) send(exchange,200,inventory.list());
+                        else if (query.matches("maxStock=[0-9]+")) {
+                            int maximum = Integer.parseInt(query.substring(9));
+                            send(exchange,200,inventory.list().stream().filter(p -> p.stock() <= maximum).toList());
+                        } else throw new IllegalArgumentException("Use maxStock=nonnegative integer");
+                    }
                     else if (method.equals("POST")) {
                         JsonObject body = readBody(exchange);
                         if (!body.has("name") || !body.get("name").isJsonPrimitive() || !body.getAsJsonPrimitive("name").isString()) throw new IllegalArgumentException("name must be a string");

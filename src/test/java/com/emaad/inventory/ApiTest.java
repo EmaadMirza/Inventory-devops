@@ -41,6 +41,16 @@ class ApiTest {
             assertEquals(400, request("POST", "/products", body).statusCode(), body.substring(0, Math.min(80, body.length())));
         }
     }
+    @Test void filtersLowStockWithoutChangingInventory() throws Exception {
+        request("POST", "/products", "{\"name\":\"Pen\",\"stock\":2}");
+        request("POST", "/products", "{\"name\":\"Notebook\",\"stock\":10}");
+        var filtered = request("GET", "/products?maxStock=2", "");
+        assertEquals(200, filtered.statusCode());
+        assertTrue(filtered.body().contains("Pen"));
+        assertFalse(filtered.body().contains("Notebook"));
+        assertTrue(request("GET", "/products", "").body().contains("Notebook"));
+        assertEquals(400, request("GET", "/products?maxStock=-1", "").statusCode());
+    }
     @Test void reportsHealthAndRejectsUnknownRoute() throws Exception {
         assertEquals(200, request("GET", "/health", "").statusCode());
         assertEquals(404, request("GET", "/unknown", "").statusCode());

@@ -1,0 +1,915 @@
+﻿{
+    "apiVersion":  "v1",
+    "items":  [
+                  {
+                      "apiVersion":  "v1",
+                      "kind":  "Pod",
+                      "metadata":  {
+                                       "creationTimestamp":  "2026-11-03T13:04:08Z",
+                                       "generateName":  "mini-inventory-89564d964-",
+                                       "generation":  1,
+                                       "labels":  {
+                                                      "app":  "mini-inventory",
+                                                      "pod-template-hash":  "89564d964"
+                                                  },
+                                       "name":  "mini-inventory-89564d964-7kmdb",
+                                       "namespace":  "default",
+                                       "ownerReferences":  [
+                                                               {
+                                                                   "apiVersion":  "apps/v1",
+                                                                   "blockOwnerDeletion":  true,
+                                                                   "controller":  true,
+                                                                   "kind":  "ReplicaSet",
+                                                                   "name":  "mini-inventory-89564d964",
+                                                                   "uid":  "a519e17c-e517-449b-a08e-334645097a2d"
+                                                               }
+                                                           ],
+                                       "resourceVersion":  "2171",
+                                       "uid":  "68fd7971-843a-4454-9cf4-ea8f0c58a6dd"
+                                   },
+                      "spec":  {
+                                   "containers":  [
+                                                      {
+                                                          "env":  [
+                                                                      {
+                                                                          "name":  "APP_PORT",
+                                                                          "value":  "8080"
+                                                                      }
+                                                                  ],
+                                                          "image":  "mini-inventory:1.0.0",
+                                                          "imagePullPolicy":  "Never",
+                                                          "livenessProbe":  {
+                                                                                "failureThreshold":  3,
+                                                                                "httpGet":  {
+                                                                                                "path":  "/health",
+                                                                                                "port":  8080,
+                                                                                                "scheme":  "HTTP"
+                                                                                            },
+                                                                                "periodSeconds":  10,
+                                                                                "successThreshold":  1,
+                                                                                "timeoutSeconds":  1
+                                                                            },
+                                                          "name":  "api",
+                                                          "ports":  [
+                                                                        {
+                                                                            "containerPort":  8080,
+                                                                            "protocol":  "TCP"
+                                                                        }
+                                                                    ],
+                                                          "readinessProbe":  {
+                                                                                 "failureThreshold":  3,
+                                                                                 "httpGet":  {
+                                                                                                 "path":  "/health",
+                                                                                                 "port":  8080,
+                                                                                                 "scheme":  "HTTP"
+                                                                                             },
+                                                                                 "periodSeconds":  5,
+                                                                                 "successThreshold":  1,
+                                                                                 "timeoutSeconds":  1
+                                                                             },
+                                                          "resources":  {
+                                                                            "limits":  {
+                                                                                           "cpu":  "250m",
+                                                                                           "memory":  "160Mi"
+                                                                                       },
+                                                                            "requests":  {
+                                                                                             "cpu":  "25m",
+                                                                                             "memory":  "64Mi"
+                                                                                         }
+                                                                        },
+                                                          "securityContext":  {
+                                                                                  "allowPrivilegeEscalation":  false,
+                                                                                  "capabilities":  {
+                                                                                                       "drop":  [
+                                                                                                                    "ALL"
+                                                                                                                ]
+                                                                                                   },
+                                                                                  "readOnlyRootFilesystem":  true
+                                                                              },
+                                                          "startupProbe":  {
+                                                                               "failureThreshold":  30,
+                                                                               "httpGet":  {
+                                                                                               "path":  "/health",
+                                                                                               "port":  8080,
+                                                                                               "scheme":  "HTTP"
+                                                                                           },
+                                                                               "periodSeconds":  2,
+                                                                               "successThreshold":  1,
+                                                                               "timeoutSeconds":  1
+                                                                           },
+                                                          "terminationMessagePath":  "/dev/termination-log",
+                                                          "terminationMessagePolicy":  "File",
+                                                          "volumeMounts":  [
+                                                                               {
+                                                                                   "mountPath":  "/var/run/secrets/kubernetes.io/serviceaccount",
+                                                                                   "name":  "kube-api-access-czjdk",
+                                                                                   "readOnly":  true
+                                                                               }
+                                                                           ]
+                                                      }
+                                                  ],
+                                   "dnsPolicy":  "ClusterFirst",
+                                   "enableServiceLinks":  true,
+                                   "nodeName":  "inventory-lab-control-plane",
+                                   "preemptionPolicy":  "PreemptLowerPriority",
+                                   "priority":  0,
+                                   "restartPolicy":  "Always",
+                                   "schedulerName":  "default-scheduler",
+                                   "securityContext":  {
+                                                           "runAsGroup":  10001,
+                                                           "runAsNonRoot":  true,
+                                                           "runAsUser":  10001
+                                                       },
+                                   "serviceAccount":  "default",
+                                   "serviceAccountName":  "default",
+                                   "terminationGracePeriodSeconds":  30,
+                                   "tolerations":  [
+                                                       {
+                                                           "effect":  "NoExecute",
+                                                           "key":  "node.kubernetes.io/not-ready",
+                                                           "operator":  "Exists",
+                                                           "tolerationSeconds":  300
+                                                       },
+                                                       {
+                                                           "effect":  "NoExecute",
+                                                           "key":  "node.kubernetes.io/unreachable",
+                                                           "operator":  "Exists",
+                                                           "tolerationSeconds":  300
+                                                       }
+                                                   ],
+                                   "volumes":  [
+                                                   {
+                                                       "name":  "kube-api-access-czjdk",
+                                                       "projected":  {
+                                                                         "defaultMode":  420,
+                                                                         "sources":  [
+                                                                                         {
+                                                                                             "serviceAccountToken":  {
+                                                                                                                         "expirationSeconds":  3607,
+                                                                                                                         "path":  "token"
+                                                                                                                     }
+                                                                                         },
+                                                                                         {
+                                                                                             "configMap":  {
+                                                                                                               "items":  [
+                                                                                                                             {
+                                                                                                                                 "key":  "ca.crt",
+                                                                                                                                 "path":  "ca.crt"
+                                                                                                                             }
+                                                                                                                         ],
+                                                                                                               "name":  "kube-root-ca.crt"
+                                                                                                           }
+                                                                                         },
+                                                                                         {
+                                                                                             "downwardAPI":  {
+                                                                                                                 "items":  [
+                                                                                                                               {
+                                                                                                                                   "fieldRef":  {
+                                                                                                                                                    "apiVersion":  "v1",
+                                                                                                                                                    "fieldPath":  "metadata.namespace"
+                                                                                                                                                },
+                                                                                                                                   "path":  "namespace"
+                                                                                                                               }
+                                                                                                                           ]
+                                                                                                             }
+                                                                                         }
+                                                                                     ]
+                                                                     }
+                                                   }
+                                               ]
+                               },
+                      "status":  {
+                                     "allocatedResources":  {
+                                                                "cpu":  "25m",
+                                                                "memory":  "64Mi"
+                                                            },
+                                     "conditions":  [
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:36Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "PodReadyToStartContainers"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:04:08Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "Initialized"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:53Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "Ready"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:53Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "ContainersReady"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:04:08Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "PodScheduled"
+                                                        }
+                                                    ],
+                                     "containerStatuses":  [
+                                                               {
+                                                                   "allocatedResources":  {
+                                                                                              "cpu":  "25m",
+                                                                                              "memory":  "64Mi"
+                                                                                          },
+                                                                   "containerID":  "containerd://55cb4cb9f655999f9350a032581720264800fbd57a37ea3719643af49782d9c3",
+                                                                   "image":  "docker.io/library/mini-inventory:1.0.0",
+                                                                   "imageID":  "sha256:1bfb0eb1a0b2ee7fbfafbffb7869ee27e97adedbf8de9be4ec9707a400f00310",
+                                                                   "lastState":  {
+                                                                                     "terminated":  {
+                                                                                                        "containerID":  "containerd://5afe9f4c75cd23c28caac94c82775c1c0cc67993a031c31ebd3467a7f234428c",
+                                                                                                        "exitCode":  255,
+                                                                                                        "finishedAt":  "2026-11-03T13:13:19Z",
+                                                                                                        "reason":  "Unknown",
+                                                                                                        "startedAt":  "2026-11-03T13:04:17Z"
+                                                                                                    }
+                                                                                 },
+                                                                   "name":  "api",
+                                                                   "ready":  true,
+                                                                   "resources":  {
+                                                                                     "limits":  {
+                                                                                                    "cpu":  "250m",
+                                                                                                    "memory":  "160Mi"
+                                                                                                },
+                                                                                     "requests":  {
+                                                                                                      "cpu":  "25m",
+                                                                                                      "memory":  "64Mi"
+                                                                                                  }
+                                                                                 },
+                                                                   "restartCount":  1,
+                                                                   "started":  true,
+                                                                   "state":  {
+                                                                                 "running":  {
+                                                                                                 "startedAt":  "2026-11-03T13:13:40Z"
+                                                                                             }
+                                                                             },
+                                                                   "user":  {
+                                                                                "linux":  {
+                                                                                              "gid":  10001,
+                                                                                              "supplementalGroups":  [
+                                                                                                                         10001
+                                                                                                                     ],
+                                                                                              "uid":  10001
+                                                                                          }
+                                                                            },
+                                                                   "volumeMounts":  [
+                                                                                        {
+                                                                                            "mountPath":  "/var/run/secrets/kubernetes.io/serviceaccount",
+                                                                                            "name":  "kube-api-access-czjdk",
+                                                                                            "readOnly":  true,
+                                                                                            "recursiveReadOnly":  "Disabled"
+                                                                                        }
+                                                                                    ]
+                                                               }
+                                                           ],
+                                     "hostIP":  "172.19.0.2",
+                                     "hostIPs":  [
+                                                     {
+                                                         "ip":  "172.19.0.2"
+                                                     }
+                                                 ],
+                                     "observedGeneration":  1,
+                                     "phase":  "Running",
+                                     "podIP":  "10.244.0.7",
+                                     "podIPs":  [
+                                                    {
+                                                        "ip":  "10.244.0.7"
+                                                    }
+                                                ],
+                                     "qosClass":  "Burstable",
+                                     "resources":  {
+                                                       "limits":  {
+                                                                      "cpu":  "250m",
+                                                                      "memory":  "160Mi"
+                                                                  },
+                                                       "requests":  {
+                                                                        "memory":  "64Mi"
+                                                                    }
+                                                   },
+                                     "startTime":  "2026-11-03T13:04:08Z"
+                                 }
+                  },
+                  {
+                      "apiVersion":  "v1",
+                      "kind":  "Pod",
+                      "metadata":  {
+                                       "creationTimestamp":  "2026-11-03T13:04:08Z",
+                                       "generateName":  "mini-inventory-89564d964-",
+                                       "generation":  1,
+                                       "labels":  {
+                                                      "app":  "mini-inventory",
+                                                      "pod-template-hash":  "89564d964"
+                                                  },
+                                       "name":  "mini-inventory-89564d964-9tbz6",
+                                       "namespace":  "default",
+                                       "ownerReferences":  [
+                                                               {
+                                                                   "apiVersion":  "apps/v1",
+                                                                   "blockOwnerDeletion":  true,
+                                                                   "controller":  true,
+                                                                   "kind":  "ReplicaSet",
+                                                                   "name":  "mini-inventory-89564d964",
+                                                                   "uid":  "a519e17c-e517-449b-a08e-334645097a2d"
+                                                               }
+                                                           ],
+                                       "resourceVersion":  "2156",
+                                       "uid":  "b889ac61-a093-4519-8bef-798a6c9519fc"
+                                   },
+                      "spec":  {
+                                   "containers":  [
+                                                      {
+                                                          "env":  [
+                                                                      {
+                                                                          "name":  "APP_PORT",
+                                                                          "value":  "8080"
+                                                                      }
+                                                                  ],
+                                                          "image":  "mini-inventory:1.0.0",
+                                                          "imagePullPolicy":  "Never",
+                                                          "livenessProbe":  {
+                                                                                "failureThreshold":  3,
+                                                                                "httpGet":  {
+                                                                                                "path":  "/health",
+                                                                                                "port":  8080,
+                                                                                                "scheme":  "HTTP"
+                                                                                            },
+                                                                                "periodSeconds":  10,
+                                                                                "successThreshold":  1,
+                                                                                "timeoutSeconds":  1
+                                                                            },
+                                                          "name":  "api",
+                                                          "ports":  [
+                                                                        {
+                                                                            "containerPort":  8080,
+                                                                            "protocol":  "TCP"
+                                                                        }
+                                                                    ],
+                                                          "readinessProbe":  {
+                                                                                 "failureThreshold":  3,
+                                                                                 "httpGet":  {
+                                                                                                 "path":  "/health",
+                                                                                                 "port":  8080,
+                                                                                                 "scheme":  "HTTP"
+                                                                                             },
+                                                                                 "periodSeconds":  5,
+                                                                                 "successThreshold":  1,
+                                                                                 "timeoutSeconds":  1
+                                                                             },
+                                                          "resources":  {
+                                                                            "limits":  {
+                                                                                           "cpu":  "250m",
+                                                                                           "memory":  "160Mi"
+                                                                                       },
+                                                                            "requests":  {
+                                                                                             "cpu":  "25m",
+                                                                                             "memory":  "64Mi"
+                                                                                         }
+                                                                        },
+                                                          "securityContext":  {
+                                                                                  "allowPrivilegeEscalation":  false,
+                                                                                  "capabilities":  {
+                                                                                                       "drop":  [
+                                                                                                                    "ALL"
+                                                                                                                ]
+                                                                                                   },
+                                                                                  "readOnlyRootFilesystem":  true
+                                                                              },
+                                                          "startupProbe":  {
+                                                                               "failureThreshold":  30,
+                                                                               "httpGet":  {
+                                                                                               "path":  "/health",
+                                                                                               "port":  8080,
+                                                                                               "scheme":  "HTTP"
+                                                                                           },
+                                                                               "periodSeconds":  2,
+                                                                               "successThreshold":  1,
+                                                                               "timeoutSeconds":  1
+                                                                           },
+                                                          "terminationMessagePath":  "/dev/termination-log",
+                                                          "terminationMessagePolicy":  "File",
+                                                          "volumeMounts":  [
+                                                                               {
+                                                                                   "mountPath":  "/var/run/secrets/kubernetes.io/serviceaccount",
+                                                                                   "name":  "kube-api-access-bcbpv",
+                                                                                   "readOnly":  true
+                                                                               }
+                                                                           ]
+                                                      }
+                                                  ],
+                                   "dnsPolicy":  "ClusterFirst",
+                                   "enableServiceLinks":  true,
+                                   "nodeName":  "inventory-lab-control-plane",
+                                   "preemptionPolicy":  "PreemptLowerPriority",
+                                   "priority":  0,
+                                   "restartPolicy":  "Always",
+                                   "schedulerName":  "default-scheduler",
+                                   "securityContext":  {
+                                                           "runAsGroup":  10001,
+                                                           "runAsNonRoot":  true,
+                                                           "runAsUser":  10001
+                                                       },
+                                   "serviceAccount":  "default",
+                                   "serviceAccountName":  "default",
+                                   "terminationGracePeriodSeconds":  30,
+                                   "tolerations":  [
+                                                       {
+                                                           "effect":  "NoExecute",
+                                                           "key":  "node.kubernetes.io/not-ready",
+                                                           "operator":  "Exists",
+                                                           "tolerationSeconds":  300
+                                                       },
+                                                       {
+                                                           "effect":  "NoExecute",
+                                                           "key":  "node.kubernetes.io/unreachable",
+                                                           "operator":  "Exists",
+                                                           "tolerationSeconds":  300
+                                                       }
+                                                   ],
+                                   "volumes":  [
+                                                   {
+                                                       "name":  "kube-api-access-bcbpv",
+                                                       "projected":  {
+                                                                         "defaultMode":  420,
+                                                                         "sources":  [
+                                                                                         {
+                                                                                             "serviceAccountToken":  {
+                                                                                                                         "expirationSeconds":  3607,
+                                                                                                                         "path":  "token"
+                                                                                                                     }
+                                                                                         },
+                                                                                         {
+                                                                                             "configMap":  {
+                                                                                                               "items":  [
+                                                                                                                             {
+                                                                                                                                 "key":  "ca.crt",
+                                                                                                                                 "path":  "ca.crt"
+                                                                                                                             }
+                                                                                                                         ],
+                                                                                                               "name":  "kube-root-ca.crt"
+                                                                                                           }
+                                                                                         },
+                                                                                         {
+                                                                                             "downwardAPI":  {
+                                                                                                                 "items":  [
+                                                                                                                               {
+                                                                                                                                   "fieldRef":  {
+                                                                                                                                                    "apiVersion":  "v1",
+                                                                                                                                                    "fieldPath":  "metadata.namespace"
+                                                                                                                                                },
+                                                                                                                                   "path":  "namespace"
+                                                                                                                               }
+                                                                                                                           ]
+                                                                                                             }
+                                                                                         }
+                                                                                     ]
+                                                                     }
+                                                   }
+                                               ]
+                               },
+                      "status":  {
+                                     "allocatedResources":  {
+                                                                "cpu":  "25m",
+                                                                "memory":  "64Mi"
+                                                            },
+                                     "conditions":  [
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:37Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "PodReadyToStartContainers"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:04:08Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "Initialized"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:52Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "Ready"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:52Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "ContainersReady"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:04:08Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "PodScheduled"
+                                                        }
+                                                    ],
+                                     "containerStatuses":  [
+                                                               {
+                                                                   "allocatedResources":  {
+                                                                                              "cpu":  "25m",
+                                                                                              "memory":  "64Mi"
+                                                                                          },
+                                                                   "containerID":  "containerd://5877c8546720f1925ff45f19cd70572f48ffc93054172e1a52f88fb294e8a4c2",
+                                                                   "image":  "docker.io/library/mini-inventory:1.0.0",
+                                                                   "imageID":  "sha256:1bfb0eb1a0b2ee7fbfafbffb7869ee27e97adedbf8de9be4ec9707a400f00310",
+                                                                   "lastState":  {
+                                                                                     "terminated":  {
+                                                                                                        "containerID":  "containerd://3db79919ed864243d18e67255ed33ac82bbc388d985f7084c3f89ea84526c08d",
+                                                                                                        "exitCode":  255,
+                                                                                                        "finishedAt":  "2026-11-03T13:13:19Z",
+                                                                                                        "reason":  "Unknown",
+                                                                                                        "startedAt":  "2026-11-03T13:04:17Z"
+                                                                                                    }
+                                                                                 },
+                                                                   "name":  "api",
+                                                                   "ready":  true,
+                                                                   "resources":  {
+                                                                                     "limits":  {
+                                                                                                    "cpu":  "250m",
+                                                                                                    "memory":  "160Mi"
+                                                                                                },
+                                                                                     "requests":  {
+                                                                                                      "cpu":  "25m",
+                                                                                                      "memory":  "64Mi"
+                                                                                                  }
+                                                                                 },
+                                                                   "restartCount":  1,
+                                                                   "started":  true,
+                                                                   "state":  {
+                                                                                 "running":  {
+                                                                                                 "startedAt":  "2026-11-03T13:13:40Z"
+                                                                                             }
+                                                                             },
+                                                                   "user":  {
+                                                                                "linux":  {
+                                                                                              "gid":  10001,
+                                                                                              "supplementalGroups":  [
+                                                                                                                         10001
+                                                                                                                     ],
+                                                                                              "uid":  10001
+                                                                                          }
+                                                                            },
+                                                                   "volumeMounts":  [
+                                                                                        {
+                                                                                            "mountPath":  "/var/run/secrets/kubernetes.io/serviceaccount",
+                                                                                            "name":  "kube-api-access-bcbpv",
+                                                                                            "readOnly":  true,
+                                                                                            "recursiveReadOnly":  "Disabled"
+                                                                                        }
+                                                                                    ]
+                                                               }
+                                                           ],
+                                     "hostIP":  "172.19.0.2",
+                                     "hostIPs":  [
+                                                     {
+                                                         "ip":  "172.19.0.2"
+                                                     }
+                                                 ],
+                                     "observedGeneration":  1,
+                                     "phase":  "Running",
+                                     "podIP":  "10.244.0.6",
+                                     "podIPs":  [
+                                                    {
+                                                        "ip":  "10.244.0.6"
+                                                    }
+                                                ],
+                                     "qosClass":  "Burstable",
+                                     "resources":  {
+                                                       "limits":  {
+                                                                      "cpu":  "250m",
+                                                                      "memory":  "160Mi"
+                                                                  },
+                                                       "requests":  {
+                                                                        "memory":  "64Mi"
+                                                                    }
+                                                   },
+                                     "startTime":  "2026-11-03T13:04:08Z"
+                                 }
+                  },
+                  {
+                      "apiVersion":  "v1",
+                      "kind":  "Pod",
+                      "metadata":  {
+                                       "creationTimestamp":  "2026-11-03T13:04:08Z",
+                                       "generateName":  "mini-inventory-89564d964-",
+                                       "generation":  1,
+                                       "labels":  {
+                                                      "app":  "mini-inventory",
+                                                      "pod-template-hash":  "89564d964"
+                                                  },
+                                       "name":  "mini-inventory-89564d964-gfkzb",
+                                       "namespace":  "default",
+                                       "ownerReferences":  [
+                                                               {
+                                                                   "apiVersion":  "apps/v1",
+                                                                   "blockOwnerDeletion":  true,
+                                                                   "controller":  true,
+                                                                   "kind":  "ReplicaSet",
+                                                                   "name":  "mini-inventory-89564d964",
+                                                                   "uid":  "a519e17c-e517-449b-a08e-334645097a2d"
+                                                               }
+                                                           ],
+                                       "resourceVersion":  "2160",
+                                       "uid":  "f6549b63-bcc5-4838-b90a-412b14ccc0f6"
+                                   },
+                      "spec":  {
+                                   "containers":  [
+                                                      {
+                                                          "env":  [
+                                                                      {
+                                                                          "name":  "APP_PORT",
+                                                                          "value":  "8080"
+                                                                      }
+                                                                  ],
+                                                          "image":  "mini-inventory:1.0.0",
+                                                          "imagePullPolicy":  "Never",
+                                                          "livenessProbe":  {
+                                                                                "failureThreshold":  3,
+                                                                                "httpGet":  {
+                                                                                                "path":  "/health",
+                                                                                                "port":  8080,
+                                                                                                "scheme":  "HTTP"
+                                                                                            },
+                                                                                "periodSeconds":  10,
+                                                                                "successThreshold":  1,
+                                                                                "timeoutSeconds":  1
+                                                                            },
+                                                          "name":  "api",
+                                                          "ports":  [
+                                                                        {
+                                                                            "containerPort":  8080,
+                                                                            "protocol":  "TCP"
+                                                                        }
+                                                                    ],
+                                                          "readinessProbe":  {
+                                                                                 "failureThreshold":  3,
+                                                                                 "httpGet":  {
+                                                                                                 "path":  "/health",
+                                                                                                 "port":  8080,
+                                                                                                 "scheme":  "HTTP"
+                                                                                             },
+                                                                                 "periodSeconds":  5,
+                                                                                 "successThreshold":  1,
+                                                                                 "timeoutSeconds":  1
+                                                                             },
+                                                          "resources":  {
+                                                                            "limits":  {
+                                                                                           "cpu":  "250m",
+                                                                                           "memory":  "160Mi"
+                                                                                       },
+                                                                            "requests":  {
+                                                                                             "cpu":  "25m",
+                                                                                             "memory":  "64Mi"
+                                                                                         }
+                                                                        },
+                                                          "securityContext":  {
+                                                                                  "allowPrivilegeEscalation":  false,
+                                                                                  "capabilities":  {
+                                                                                                       "drop":  [
+                                                                                                                    "ALL"
+                                                                                                                ]
+                                                                                                   },
+                                                                                  "readOnlyRootFilesystem":  true
+                                                                              },
+                                                          "startupProbe":  {
+                                                                               "failureThreshold":  30,
+                                                                               "httpGet":  {
+                                                                                               "path":  "/health",
+                                                                                               "port":  8080,
+                                                                                               "scheme":  "HTTP"
+                                                                                           },
+                                                                               "periodSeconds":  2,
+                                                                               "successThreshold":  1,
+                                                                               "timeoutSeconds":  1
+                                                                           },
+                                                          "terminationMessagePath":  "/dev/termination-log",
+                                                          "terminationMessagePolicy":  "File",
+                                                          "volumeMounts":  [
+                                                                               {
+                                                                                   "mountPath":  "/var/run/secrets/kubernetes.io/serviceaccount",
+                                                                                   "name":  "kube-api-access-9s2b6",
+                                                                                   "readOnly":  true
+                                                                               }
+                                                                           ]
+                                                      }
+                                                  ],
+                                   "dnsPolicy":  "ClusterFirst",
+                                   "enableServiceLinks":  true,
+                                   "nodeName":  "inventory-lab-control-plane",
+                                   "preemptionPolicy":  "PreemptLowerPriority",
+                                   "priority":  0,
+                                   "restartPolicy":  "Always",
+                                   "schedulerName":  "default-scheduler",
+                                   "securityContext":  {
+                                                           "runAsGroup":  10001,
+                                                           "runAsNonRoot":  true,
+                                                           "runAsUser":  10001
+                                                       },
+                                   "serviceAccount":  "default",
+                                   "serviceAccountName":  "default",
+                                   "terminationGracePeriodSeconds":  30,
+                                   "tolerations":  [
+                                                       {
+                                                           "effect":  "NoExecute",
+                                                           "key":  "node.kubernetes.io/not-ready",
+                                                           "operator":  "Exists",
+                                                           "tolerationSeconds":  300
+                                                       },
+                                                       {
+                                                           "effect":  "NoExecute",
+                                                           "key":  "node.kubernetes.io/unreachable",
+                                                           "operator":  "Exists",
+                                                           "tolerationSeconds":  300
+                                                       }
+                                                   ],
+                                   "volumes":  [
+                                                   {
+                                                       "name":  "kube-api-access-9s2b6",
+                                                       "projected":  {
+                                                                         "defaultMode":  420,
+                                                                         "sources":  [
+                                                                                         {
+                                                                                             "serviceAccountToken":  {
+                                                                                                                         "expirationSeconds":  3607,
+                                                                                                                         "path":  "token"
+                                                                                                                     }
+                                                                                         },
+                                                                                         {
+                                                                                             "configMap":  {
+                                                                                                               "items":  [
+                                                                                                                             {
+                                                                                                                                 "key":  "ca.crt",
+                                                                                                                                 "path":  "ca.crt"
+                                                                                                                             }
+                                                                                                                         ],
+                                                                                                               "name":  "kube-root-ca.crt"
+                                                                                                           }
+                                                                                         },
+                                                                                         {
+                                                                                             "downwardAPI":  {
+                                                                                                                 "items":  [
+                                                                                                                               {
+                                                                                                                                   "fieldRef":  {
+                                                                                                                                                    "apiVersion":  "v1",
+                                                                                                                                                    "fieldPath":  "metadata.namespace"
+                                                                                                                                                },
+                                                                                                                                   "path":  "namespace"
+                                                                                                                               }
+                                                                                                                           ]
+                                                                                                             }
+                                                                                         }
+                                                                                     ]
+                                                                     }
+                                                   }
+                                               ]
+                               },
+                      "status":  {
+                                     "allocatedResources":  {
+                                                                "cpu":  "25m",
+                                                                "memory":  "64Mi"
+                                                            },
+                                     "conditions":  [
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:37Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "PodReadyToStartContainers"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:04:08Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "Initialized"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:52Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "Ready"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:13:52Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "ContainersReady"
+                                                        },
+                                                        {
+                                                            "lastProbeTime":  null,
+                                                            "lastTransitionTime":  "2026-11-03T13:04:08Z",
+                                                            "observedGeneration":  1,
+                                                            "status":  "True",
+                                                            "type":  "PodScheduled"
+                                                        }
+                                                    ],
+                                     "containerStatuses":  [
+                                                               {
+                                                                   "allocatedResources":  {
+                                                                                              "cpu":  "25m",
+                                                                                              "memory":  "64Mi"
+                                                                                          },
+                                                                   "containerID":  "containerd://7e2f7442ac2dcb7762ca8fa70ba03cf52d44adebfee89478b845265f150a66b5",
+                                                                   "image":  "docker.io/library/mini-inventory:1.0.0",
+                                                                   "imageID":  "sha256:1bfb0eb1a0b2ee7fbfafbffb7869ee27e97adedbf8de9be4ec9707a400f00310",
+                                                                   "lastState":  {
+                                                                                     "terminated":  {
+                                                                                                        "containerID":  "containerd://afdb90299ac5693cb84ee23eefb49c3e819fca1a2b5a404b3b4b9e9d1bdeb53f",
+                                                                                                        "exitCode":  255,
+                                                                                                        "finishedAt":  "2026-11-03T13:13:19Z",
+                                                                                                        "reason":  "Unknown",
+                                                                                                        "startedAt":  "2026-11-03T13:04:17Z"
+                                                                                                    }
+                                                                                 },
+                                                                   "name":  "api",
+                                                                   "ready":  true,
+                                                                   "resources":  {
+                                                                                     "limits":  {
+                                                                                                    "cpu":  "250m",
+                                                                                                    "memory":  "160Mi"
+                                                                                                },
+                                                                                     "requests":  {
+                                                                                                      "cpu":  "25m",
+                                                                                                      "memory":  "64Mi"
+                                                                                                  }
+                                                                                 },
+                                                                   "restartCount":  1,
+                                                                   "started":  true,
+                                                                   "state":  {
+                                                                                 "running":  {
+                                                                                                 "startedAt":  "2026-11-03T13:13:39Z"
+                                                                                             }
+                                                                             },
+                                                                   "user":  {
+                                                                                "linux":  {
+                                                                                              "gid":  10001,
+                                                                                              "supplementalGroups":  [
+                                                                                                                         10001
+                                                                                                                     ],
+                                                                                              "uid":  10001
+                                                                                          }
+                                                                            },
+                                                                   "volumeMounts":  [
+                                                                                        {
+                                                                                            "mountPath":  "/var/run/secrets/kubernetes.io/serviceaccount",
+                                                                                            "name":  "kube-api-access-9s2b6",
+                                                                                            "readOnly":  true,
+                                                                                            "recursiveReadOnly":  "Disabled"
+                                                                                        }
+                                                                                    ]
+                                                               }
+                                                           ],
+                                     "hostIP":  "172.19.0.2",
+                                     "hostIPs":  [
+                                                     {
+                                                         "ip":  "172.19.0.2"
+                                                     }
+                                                 ],
+                                     "observedGeneration":  1,
+                                     "phase":  "Running",
+                                     "podIP":  "10.244.0.3",
+                                     "podIPs":  [
+                                                    {
+                                                        "ip":  "10.244.0.3"
+                                                    }
+                                                ],
+                                     "qosClass":  "Burstable",
+                                     "resources":  {
+                                                       "limits":  {
+                                                                      "cpu":  "250m",
+                                                                      "memory":  "160Mi"
+                                                                  },
+                                                       "requests":  {
+                                                                        "memory":  "64Mi"
+                                                                    }
+                                                   },
+                                     "startTime":  "2026-11-03T13:04:08Z"
+                                 }
+                  }
+              ],
+    "kind":  "List",
+    "metadata":  {
+                     "resourceVersion":  ""
+                 }
+}

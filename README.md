@@ -41,3 +41,16 @@ Kubernetes: create the dedicated `inventory-lab` Kind cluster using k8s/kind.yam
 Inventory is process-local and resets on restart. Replicas do not share a database. Scaling checks use health responses and independent replicas; use one replica for stateful smoke checks. A production version needs shared persistence and authentication.
 
 Evidence contains actual logs and unaltered screenshots. STATUS.md distinguishes completed and pending work. Reports must only claim observed results. Coordinator invitation remains deferred.
+
+## Deliverable files
+- Component 1 report (review draft until Jenkins browser screenshots are added): output/pdf/Emaad-Mirza-Component-1-CI.pdf
+- Component 2 report: output/pdf/Emaad-Mirza-Component-2-Deployment.pdf
+- Source package: source-package.zip (source, reports, evidence, runnable JAR and Git history bundle; excludes secrets/runtimes).
+- Repository identity: repo_link.txt
+- Actual results and storage attribution: evidence/ and STATUS.md
+
+For a fresh checkout, run `python scripts/setup-secrets.py` before starting Jenkins or Ansible. This preserves existing lab credentials and generates missing local credentials only.
+
+Kubernetes reproduction uses `powershell -File scripts/setup-kind.ps1`, then Kind cluster creation with `--kubeconfig .lab/kubeconfig` and the pinned v1.36.4 node digest from the report. `powershell -File scripts/verify-kubernetes.ps1` exports a single-platform image and imports it locally inside this lab's node before rollout/scaling. This avoids the streaming import that stalled on this machine. Use `kubectl --kubeconfig .lab/kubeconfig --context kind-inventory-lab ...` throughout. Resume a stopped lab node with `docker start inventory-lab-control-plane` and wait for API readiness.
+
+Browser automation could not verify the browser URL. Jenkins UI screenshots remain outstanding; the Component 1 cover states this clearly. No unexecuted step is marked complete. The source package is a checkpoint until that evidence is inserted.

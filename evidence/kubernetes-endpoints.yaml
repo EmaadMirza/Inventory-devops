@@ -1,0 +1,90 @@
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 172.19.0.2
+    conditions:
+      ready: true
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2026-11-03T12:52:23Z"
+    generation: 1
+    labels:
+      kubernetes.io/service-name: kubernetes
+    name: kubernetes
+    namespace: default
+    resourceVersion: "252"
+    uid: 6aead5cc-52e9-4727-908f-c1962045d354
+  ports:
+  - name: https
+    port: 6443
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.244.0.6
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: inventory-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: mini-inventory-89564d964-9tbz6
+      namespace: default
+      uid: b889ac61-a093-4519-8bef-798a6c9519fc
+  - addresses:
+    - 10.244.0.7
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: inventory-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: mini-inventory-89564d964-7kmdb
+      namespace: default
+      uid: 68fd7971-843a-4454-9cf4-ea8f0c58a6dd
+  - addresses:
+    - 10.244.0.3
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: inventory-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: mini-inventory-89564d964-gfkzb
+      namespace: default
+      uid: f6549b63-bcc5-4838-b90a-412b14ccc0f6
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2026-11-03T13:14:43Z"
+    creationTimestamp: "2026-11-03T13:04:07Z"
+    generateName: mini-inventory-
+    generation: 27
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: mini-inventory
+    name: mini-inventory-pmp7t
+    namespace: default
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: mini-inventory
+      uid: e09f8cbd-2357-458e-9fe2-e013e7229f37
+    resourceVersion: "2346"
+    uid: db49a25f-a945-41a0-8b8a-27146649302b
+  ports:
+  - name: ""
+    port: 8080
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

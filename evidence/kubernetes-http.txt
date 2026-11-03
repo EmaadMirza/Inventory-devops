@@ -1,0 +1,6 @@
+Service port-forward GET /health -> 200: {"instance": "mini-inventory-89564d964-9tbz6", "status": "UP"}
+Service port-forward GET /products -> 200: [{"id": 1, "name": "Notebook", "stock": 10}, {"id": 2, "name": "Pen", "stock": 25}]
+Pod proxy health -> 200: {"status": "UP", "instance": "mini-inventory-89564d964-7kmdb"}
+Pod proxy health -> 200: {"instance": "mini-inventory-89564d964-9tbz6", "status": "UP"}
+Pod proxy health -> 200: {"status": "UP", "instance": "mini-inventory-89564d964-gfkzb"}
+PASS: Service API and all 3 replica health identities verified

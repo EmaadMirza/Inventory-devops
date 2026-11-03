@@ -2,6 +2,8 @@
 .lab
 evidence
 reports
+output
+source-package.zip
 .secrets
 target/*
 !target/mini-inventory.jar

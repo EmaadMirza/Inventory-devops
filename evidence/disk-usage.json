@@ -1,0 +1,24 @@
+{
+  "units": "decimal GB = 1,000,000,000 bytes; Docker CLI rounded estimates",
+  "host_project_without_lab_GB": 0.002257316,
+  "downloaded_kind_tool_GB": 0.01084416,
+  "exported_image_archive_GB": 0.093694976,
+  "other_lab_temporary_and_QA_GB": 0.005266074,
+  "host_total_GB": 0.112062526,
+  "assignment_images_deduplicated_GB_estimate": 3.997,
+  "assignment_container_writable_layers_GB_estimate": 0.4814,
+  "assignment_volumes_GB_estimate": 1.8213300000000001,
+  "assignment_cache_exclusive_GB_estimate": 1.175763512,
+  "preexisting_images_GB_estimate": 1.018,
+  "preexisting_volumes_GB_estimate": 0.04816,
+  "preexisting_cache_exclusive_GB_estimate": 0.274812288,
+  "cross_assignment_existing_shared_layer_count": 1,
+  "initial_C_free_GB": 18.683834368,
+  "free_GB": {
+    "C": 8.25853952,
+    "D": 84.612984832
+  },
+  "caveat": "Images use engine-wide deduplicated image total minus observed pre-assignment baseline. Cache counts only Shared=false. VHDX expansion, metadata, compression and other host activity prevent exact physical attribution; do not add VHDX length to these categories. Snapshot precedes final source ZIP.",
+  "assignment_total_GB_estimate": 7.587556038,
+  "observed_C_free_reduction_GB_not_exact_attribution": 10.425294848
+}

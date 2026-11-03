@@ -1,0 +1,21 @@
+{
+  "build": 2,
+  "result": "SUCCESS",
+  "causes": [
+    {
+      "_class": "hudson.triggers.SCMTrigger$SCMTriggerCause",
+      "shortDescription": "Started by an SCM change"
+    }
+  ],
+  "tests": 7,
+  "failures": 0,
+  "artifacts": [
+    {
+      "displayPath": "mini-inventory.jar",
+      "fileName": "mini-inventory.jar",
+      "relativePath": "target/mini-inventory.jar"
+    }
+  ],
+  "jar_bytes": 323714,
+  "jar_sha256": "d1408930d037fcf1128500f77e0ef21082a740746284db78427ff7a12c8f2170"
+}

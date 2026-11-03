@@ -1,0 +1,104 @@
+LAST SEEN   TYPE      REASON                    OBJECT                                MESSAGE
+21m         Normal    Starting                  node/inventory-lab-control-plane      
+71s         Normal    Starting                  node/inventory-lab-control-plane      
+22m         Normal    NodeHasSufficientMemory   node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasSufficientMemory
+22m         Normal    NodeHasNoDiskPressure     node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasNoDiskPressure
+22m         Normal    NodeHasSufficientPID      node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasSufficientPID
+22m         Normal    NodeAllocatableEnforced   node/inventory-lab-control-plane      Updated Node Allocatable limit across pods
+22m         Normal    Starting                  node/inventory-lab-control-plane      Starting kubelet.
+22m         Normal    Starting                  node/inventory-lab-control-plane      Starting kubelet.
+22m         Normal    NodeAllocatableEnforced   node/inventory-lab-control-plane      Updated Node Allocatable limit across pods
+22m         Normal    NodeHasSufficientPID      node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasSufficientPID
+22m         Normal    NodeHasNoDiskPressure     node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasNoDiskPressure
+22m         Normal    NodeHasSufficientMemory   node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasSufficientMemory
+22m         Normal    RegisteredNode            node/inventory-lab-control-plane      Node inventory-lab-control-plane event: Registered Node inventory-lab-control-plane in Controller
+21m         Normal    NodeReady                 node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeReady
+10m         Normal    ScalingReplicaSet         deployment/mini-inventory             Scaled up replica set mini-inventory-89564d964 from 0 to 3
+10m         Normal    Scheduled                 pod/mini-inventory-89564d964-9tbz6    Successfully assigned default/mini-inventory-89564d964-9tbz6 to inventory-lab-control-plane
+10m         Normal    SuccessfulCreate          replicaset/mini-inventory-89564d964   Created pod: mini-inventory-89564d964-gfkzb
+10m         Normal    SuccessfulCreate          replicaset/mini-inventory-89564d964   Created pod: mini-inventory-89564d964-9tbz6
+10m         Normal    SuccessfulCreate          replicaset/mini-inventory-89564d964   Created pod: mini-inventory-89564d964-7kmdb
+10m         Normal    Scheduled                 pod/mini-inventory-89564d964-7kmdb    Successfully assigned default/mini-inventory-89564d964-7kmdb to inventory-lab-control-plane
+10m         Normal    Scheduled                 pod/mini-inventory-89564d964-gfkzb    Successfully assigned default/mini-inventory-89564d964-gfkzb to inventory-lab-control-plane
+10m         Normal    Pulled                    pod/mini-inventory-89564d964-gfkzb    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+10m         Normal    Pulled                    pod/mini-inventory-89564d964-7kmdb    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+10m         Normal    Pulled                    pod/mini-inventory-89564d964-9tbz6    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+10m         Normal    Created                   pod/mini-inventory-89564d964-7kmdb    Container created
+10m         Normal    Created                   pod/mini-inventory-89564d964-gfkzb    Container created
+10m         Normal    Created                   pod/mini-inventory-89564d964-9tbz6    Container created
+10m         Normal    Started                   pod/mini-inventory-89564d964-9tbz6    Container started
+10m         Normal    Started                   pod/mini-inventory-89564d964-7kmdb    Container started
+10m         Normal    Started                   pod/mini-inventory-89564d964-gfkzb    Container started
+10m         Warning   Unhealthy                 pod/mini-inventory-89564d964-gfkzb    Startup probe failed: Get "http://10.244.0.5:8080/health": dial tcp 10.244.0.5:8080: connect: connection refused
+10m         Warning   Unhealthy                 pod/mini-inventory-89564d964-9tbz6    Startup probe failed: Get "http://10.244.0.6:8080/health": dial tcp 10.244.0.6:8080: connect: connection refused
+10m         Warning   Unhealthy                 pod/mini-inventory-89564d964-7kmdb    Startup probe failed: Get "http://10.244.0.7:8080/health": dial tcp 10.244.0.7:8080: connect: connection refused
+10m         Warning   Unhealthy                 pod/mini-inventory-89564d964-gfkzb    Startup probe failed: Get "http://10.244.0.5:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+10m         Warning   Unhealthy                 pod/mini-inventory-89564d964-9tbz6    Startup probe failed: Get "http://10.244.0.6:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+10m         Warning   Unhealthy                 pod/mini-inventory-89564d964-7kmdb    Startup probe failed: Get "http://10.244.0.7:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+8m58s       Normal    ScalingReplicaSet         deployment/mini-inventory             Scaled up replica set mini-inventory-89564d964 from 3 to 5
+8m58s       Normal    SuccessfulCreate          replicaset/mini-inventory-89564d964   Created pod: mini-inventory-89564d964-kfkj6
+8m58s       Normal    Scheduled                 pod/mini-inventory-89564d964-kfkj6    Successfully assigned default/mini-inventory-89564d964-kfkj6 to inventory-lab-control-plane
+8m58s       Normal    SuccessfulCreate          replicaset/mini-inventory-89564d964   Created pod: mini-inventory-89564d964-nvbm2
+8m57s       Normal    Scheduled                 pod/mini-inventory-89564d964-nvbm2    Successfully assigned default/mini-inventory-89564d964-nvbm2 to inventory-lab-control-plane
+8m50s       Normal    Pulled                    pod/mini-inventory-89564d964-nvbm2    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+8m49s       Normal    Created                   pod/mini-inventory-89564d964-nvbm2    Container created
+8m49s       Normal    Pulled                    pod/mini-inventory-89564d964-kfkj6    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+8m48s       Normal    Created                   pod/mini-inventory-89564d964-kfkj6    Container created
+8m47s       Normal    Started                   pod/mini-inventory-89564d964-nvbm2    Container started
+8m46s       Normal    Started                   pod/mini-inventory-89564d964-kfkj6    Container started
+8m29s       Warning   Unhealthy                 pod/mini-inventory-89564d964-kfkj6    Startup probe failed: Get "http://10.244.0.8:8080/health": dial tcp 10.244.0.8:8080: connect: connection refused
+8m21s       Warning   Unhealthy                 pod/mini-inventory-89564d964-nvbm2    Startup probe failed: Get "http://10.244.0.9:8080/health": dial tcp 10.244.0.9:8080: connect: connection refused
+8m15s       Warning   Unhealthy                 pod/mini-inventory-89564d964-7kmdb    Readiness probe failed: Get "http://10.244.0.7:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+8m10s       Warning   Unhealthy                 pod/mini-inventory-89564d964-kfkj6    Startup probe failed: Get "http://10.244.0.8:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+8m6s        Warning   Unhealthy                 pod/mini-inventory-89564d964-nvbm2    Startup probe failed: Get "http://10.244.0.9:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+7m40s       Normal    ScalingReplicaSet         deployment/mini-inventory             Scaled down replica set mini-inventory-89564d964 from 5 to 3
+7m39s       Normal    SuccessfulDelete          replicaset/mini-inventory-89564d964   Deleted pod: mini-inventory-89564d964-nvbm2
+7m39s       Normal    Killing                   pod/mini-inventory-89564d964-nvbm2    Stopping container api
+7m39s       Normal    SuccessfulDelete          replicaset/mini-inventory-89564d964   Deleted pod: mini-inventory-89564d964-kfkj6
+7m39s       Normal    Killing                   pod/mini-inventory-89564d964-kfkj6    Stopping container api
+92s         Normal    NodeAllocatableEnforced   node/inventory-lab-control-plane      Updated Node Allocatable limit across pods
+92s         Normal    Starting                  node/inventory-lab-control-plane      Starting kubelet.
+91s         Normal    NodeHasSufficientPID      node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasSufficientPID
+91s         Normal    NodeHasNoDiskPressure     node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasNoDiskPressure
+91s         Normal    NodeHasSufficientMemory   node/inventory-lab-control-plane      Node inventory-lab-control-plane status is now: NodeHasSufficientMemory
+82s         Normal    SandboxChanged            pod/mini-inventory-89564d964-gfkzb    Pod sandbox changed, it will be killed and re-created.
+82s         Normal    SandboxChanged            pod/mini-inventory-89564d964-7kmdb    Pod sandbox changed, it will be killed and re-created.
+82s         Normal    SandboxChanged            pod/mini-inventory-89564d964-9tbz6    Pod sandbox changed, it will be killed and re-created.
+76s         Normal    Pulled                    pod/mini-inventory-89564d964-7kmdb    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+75s         Normal    Pulled                    pod/mini-inventory-89564d964-gfkzb    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+75s         Normal    Pulled                    pod/mini-inventory-89564d964-9tbz6    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+74s         Normal    Created                   pod/mini-inventory-89564d964-9tbz6    Container created
+74s         Normal    Created                   pod/mini-inventory-89564d964-gfkzb    Container created
+74s         Normal    Created                   pod/mini-inventory-89564d964-7kmdb    Container created
+73s         Normal    Started                   pod/mini-inventory-89564d964-gfkzb    Container started
+72s         Normal    Started                   pod/mini-inventory-89564d964-9tbz6    Container started
+72s         Normal    Started                   pod/mini-inventory-89564d964-7kmdb    Container started
+66s         Warning   Unhealthy                 pod/mini-inventory-89564d964-9tbz6    Startup probe failed: Get "http://10.244.0.6:8080/health": dial tcp 10.244.0.6:8080: connect: connection refused
+66s         Warning   Unhealthy                 pod/mini-inventory-89564d964-gfkzb    Startup probe failed: Get "http://10.244.0.3:8080/health": dial tcp 10.244.0.3:8080: connect: connection refused
+66s         Warning   Unhealthy                 pod/mini-inventory-89564d964-7kmdb    Startup probe failed: Get "http://10.244.0.7:8080/health": dial tcp 10.244.0.7:8080: connect: connection refused
+61s         Warning   Unhealthy                 pod/mini-inventory-89564d964-gfkzb    Startup probe failed: Get "http://10.244.0.3:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+61s         Warning   Unhealthy                 pod/mini-inventory-89564d964-9tbz6    Startup probe failed: Get "http://10.244.0.6:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+60s         Warning   Unhealthy                 pod/mini-inventory-89564d964-7kmdb    Startup probe failed: Get "http://10.244.0.7:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+60s         Normal    RegisteredNode            node/inventory-lab-control-plane      Node inventory-lab-control-plane event: Registered Node inventory-lab-control-plane in Controller
+29s         Normal    SuccessfulCreate          replicaset/mini-inventory-89564d964   Created pod: mini-inventory-89564d964-v5vct
+29s         Normal    ScalingReplicaSet         deployment/mini-inventory             Scaled up replica set mini-inventory-89564d964 from 3 to 5
+28s         Normal    Scheduled                 pod/mini-inventory-89564d964-v5vct    Successfully assigned default/mini-inventory-89564d964-v5vct to inventory-lab-control-plane
+28s         Normal    Scheduled                 pod/mini-inventory-89564d964-c6lc7    Successfully assigned default/mini-inventory-89564d964-c6lc7 to inventory-lab-control-plane
+28s         Normal    SuccessfulCreate          replicaset/mini-inventory-89564d964   Created pod: mini-inventory-89564d964-c6lc7
+27s         Normal    Started                   pod/mini-inventory-89564d964-v5vct    Container started
+27s         Normal    Created                   pod/mini-inventory-89564d964-c6lc7    Container created
+27s         Normal    Created                   pod/mini-inventory-89564d964-v5vct    Container created
+27s         Normal    Pulled                    pod/mini-inventory-89564d964-v5vct    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+27s         Normal    Pulled                    pod/mini-inventory-89564d964-c6lc7    Container image "mini-inventory:1.0.0" already present on machine and can be accessed by the pod
+27s         Normal    Started                   pod/mini-inventory-89564d964-c6lc7    Container started
+24s         Warning   Unhealthy                 pod/mini-inventory-89564d964-v5vct    Startup probe failed: Get "http://10.244.0.8:8080/health": dial tcp 10.244.0.8:8080: connect: connection refused
+24s         Warning   Unhealthy                 pod/mini-inventory-89564d964-c6lc7    Startup probe failed: Get "http://10.244.0.9:8080/health": dial tcp 10.244.0.9:8080: connect: connection refused
+21s         Warning   Unhealthy                 pod/mini-inventory-89564d964-v5vct    Startup probe failed: Get "http://10.244.0.8:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21s         Warning   Unhealthy                 pod/mini-inventory-89564d964-c6lc7    Startup probe failed: Get "http://10.244.0.9:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+11s         Normal    SuccessfulDelete          replicaset/mini-inventory-89564d964   Deleted pod: mini-inventory-89564d964-v5vct
+11s         Normal    SuccessfulDelete          replicaset/mini-inventory-89564d964   Deleted pod: mini-inventory-89564d964-c6lc7
+11s         Normal    Killing                   pod/mini-inventory-89564d964-c6lc7    Stopping container api
+11s         Normal    Killing                   pod/mini-inventory-89564d964-v5vct    Stopping container api
+11s         Normal    ScalingReplicaSet         deployment/mini-inventory             Scaled down replica set mini-inventory-89564d964 from 5 to 3
+10s         Warning   Unhealthy                 pod/mini-inventory-89564d964-c6lc7    Readiness probe failed: Get "http://10.244.0.9:8080/health": dial tcp 10.244.0.9:8080: connect: connection refused
+10s         Warning   Unhealthy                 pod/mini-inventory-89564d964-v5vct    Readiness probe failed: Get "http://10.244.0.8:8080/health": dial tcp 10.244.0.8:8080: connect: connection refused

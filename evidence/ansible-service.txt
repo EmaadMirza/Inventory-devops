@@ -1,0 +1,1 @@
+inventory                        RUNNING   pid 1243, uptime 0:01:10

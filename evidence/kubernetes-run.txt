@@ -1,0 +1,32 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261103184414
+Username: MIRZA\mirza
+RunAs User: MIRZA\mirza
+Configuration Name: 
+Machine: MIRZA (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -File scripts\verify-kubernetes.ps1 -ImageLoaded
+Process ID: 7188
+PSVersion: 5.1.19041.7802
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.7802
+BuildVersion: 10.0.19041.7802
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is evidence/kubernetes-run.txt
+
+
+
+
+
+
+
+
+
+**********************
+Windows PowerShell transcript end
+End time: 20261103184453
+**********************

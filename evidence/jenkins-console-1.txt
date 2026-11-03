@@ -1,0 +1,180 @@
+Started by user emaad
+Obtained Jenkinsfile from git https://github.com/EmaadMirza/Inventory-devops.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/Mini-Inventory
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/EmaadMirza/Inventory-devops.git
+ > git init /var/jenkins_home/workspace/Mini-Inventory # timeout=10
+Fetching upstream changes from https://github.com/EmaadMirza/Inventory-devops.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/EmaadMirza/Inventory-devops.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/EmaadMirza/Inventory-devops.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b87a80a56534304251ed98d3974f14cda9535c51 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b87a80a56534304251ed98d3974f14cda9535c51 # timeout=10
+Commit message: "Add reproducible Jenkins setup and portable Ansible SSH key handling"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] timeout
+[2026-11-03T12:34:43.589Z] Timeout set to expire in 10 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+[2026-11-03T12:34:44.116Z] Selected Git installation does not exist. Using Default
+[2026-11-03T12:34:44.116Z] The recommended git tool is: NONE
+[2026-11-03T12:34:44.116Z] No credentials specified
+[2026-11-03T12:34:44.118Z]  > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Mini-Inventory/.git # timeout=10
+[2026-11-03T12:34:44.132Z] Fetching changes from the remote Git repository
+[2026-11-03T12:34:44.135Z]  > git config remote.origin.url https://github.com/EmaadMirza/Inventory-devops.git # timeout=10
+[2026-11-03T12:34:44.142Z] Fetching upstream changes from https://github.com/EmaadMirza/Inventory-devops.git
+[2026-11-03T12:34:44.143Z]  > git --version # timeout=10
+[2026-11-03T12:34:44.151Z]  > git --version # 'git version 2.47.3'
+[2026-11-03T12:34:44.152Z]  > git fetch --tags --force --progress -- https://github.com/EmaadMirza/Inventory-devops.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2026-11-03T12:34:44.968Z]  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+[2026-11-03T12:34:44.996Z] Checking out Revision b87a80a56534304251ed98d3974f14cda9535c51 (refs/remotes/origin/main)
+[2026-11-03T12:34:44.996Z]  > git config core.sparsecheckout # timeout=10
+[2026-11-03T12:34:45.013Z]  > git checkout -f b87a80a56534304251ed98d3974f14cda9535c51 # timeout=10
+[2026-11-03T12:34:45.056Z] Commit message: "Add reproducible Jenkins setup and portable Ansible SSH key handling"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
+[2026-11-03T12:34:45.778Z] + mvn -B -ntp clean test
+[2026-11-03T12:34:50.979Z] [INFO] Scanning for projects...
+[2026-11-03T12:34:50.979Z] [INFO] 
+[2026-11-03T12:34:50.980Z] [INFO] ----------------------< com.emaad:mini-inventory >----------------------
+[2026-11-03T12:34:50.980Z] [INFO] Building mini-inventory 1.0.0
+[2026-11-03T12:34:50.980Z] [INFO]   from pom.xml
+[2026-11-03T12:34:50.980Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-11-03T12:35:05.825Z] [INFO] 
+[2026-11-03T12:35:05.825Z] [INFO] --- clean:3.2.0:clean (default-clean) @ mini-inventory ---
+[2026-11-03T12:35:05.825Z] [INFO] 
+[2026-11-03T12:35:05.825Z] [INFO] --- resources:3.3.1:resources (default-resources) @ mini-inventory ---
+[2026-11-03T12:35:08.316Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/Mini-Inventory/src/main/resources
+[2026-11-03T12:35:08.316Z] [INFO] 
+[2026-11-03T12:35:08.316Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ mini-inventory ---
+[2026-11-03T12:35:12.448Z] [INFO] Recompiling the module because of changed dependency.
+[2026-11-03T12:35:12.448Z] [INFO] Compiling 2 source files with javac [debug release 17] to target/classes
+[2026-11-03T12:35:13.361Z] [INFO] 
+[2026-11-03T12:35:13.361Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ mini-inventory ---
+[2026-11-03T12:35:13.361Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/Mini-Inventory/src/test/resources
+[2026-11-03T12:35:13.362Z] [INFO] 
+[2026-11-03T12:35:13.362Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ mini-inventory ---
+[2026-11-03T12:35:13.362Z] [INFO] Recompiling the module because of changed dependency.
+[2026-11-03T12:35:13.362Z] [INFO] Compiling 2 source files with javac [debug release 17] to target/test-classes
+[2026-11-03T12:35:13.915Z] [INFO] 
+[2026-11-03T12:35:13.915Z] [INFO] --- surefire:3.5.2:test (default-test) @ mini-inventory ---
+[2026-11-03T12:35:23.795Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[2026-11-03T12:35:25.142Z] [INFO] 
+[2026-11-03T12:35:25.142Z] [INFO] -------------------------------------------------------
+[2026-11-03T12:35:25.142Z] [INFO]  T E S T S
+[2026-11-03T12:35:25.142Z] [INFO] -------------------------------------------------------
+[2026-11-03T12:35:26.490Z] [INFO] Running com.emaad.inventory.ApiTest
+[2026-11-03T12:35:28.979Z] [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.167 s -- in com.emaad.inventory.ApiTest
+[2026-11-03T12:35:28.979Z] [INFO] Running com.emaad.inventory.InventoryTest
+[2026-11-03T12:35:28.979Z] [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in com.emaad.inventory.InventoryTest
+[2026-11-03T12:35:28.979Z] [INFO] 
+[2026-11-03T12:35:28.979Z] [INFO] Results:
+[2026-11-03T12:35:28.979Z] [INFO] 
+[2026-11-03T12:35:28.980Z] [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[2026-11-03T12:35:28.980Z] [INFO] 
+[2026-11-03T12:35:28.980Z] [INFO] ------------------------------------------------------------------------
+[2026-11-03T12:35:28.980Z] [INFO] BUILD SUCCESS
+[2026-11-03T12:35:28.980Z] [INFO] ------------------------------------------------------------------------
+[2026-11-03T12:35:28.980Z] [INFO] Total time:  38.920 s
+[2026-11-03T12:35:28.980Z] [INFO] Finished at: 2026-11-03T12:35:28Z
+[2026-11-03T12:35:28.980Z] [INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Package)
+[Pipeline] sh
+[2026-11-03T12:35:29.558Z] + mvn -B -ntp -DskipTests package
+[2026-11-03T12:35:34.770Z] [INFO] Scanning for projects...
+[2026-11-03T12:35:34.770Z] [INFO] 
+[2026-11-03T12:35:34.770Z] [INFO] ----------------------< com.emaad:mini-inventory >----------------------
+[2026-11-03T12:35:34.770Z] [INFO] Building mini-inventory 1.0.0
+[2026-11-03T12:35:34.770Z] [INFO]   from pom.xml
+[2026-11-03T12:35:34.770Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-11-03T12:35:37.258Z] [INFO] 
+[2026-11-03T12:35:37.258Z] [INFO] --- resources:3.3.1:resources (default-resources) @ mini-inventory ---
+[2026-11-03T12:35:37.511Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/Mini-Inventory/src/main/resources
+[2026-11-03T12:35:37.511Z] [INFO] 
+[2026-11-03T12:35:37.511Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ mini-inventory ---
+[2026-11-03T12:35:38.068Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-11-03T12:35:38.068Z] [INFO] 
+[2026-11-03T12:35:38.068Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ mini-inventory ---
+[2026-11-03T12:35:38.068Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/Mini-Inventory/src/test/resources
+[2026-11-03T12:35:38.068Z] [INFO] 
+[2026-11-03T12:35:38.068Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ mini-inventory ---
+[2026-11-03T12:35:38.068Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-11-03T12:35:38.068Z] [INFO] 
+[2026-11-03T12:35:38.068Z] [INFO] --- surefire:3.5.2:test (default-test) @ mini-inventory ---
+[2026-11-03T12:35:38.324Z] [INFO] Tests are skipped.
+[2026-11-03T12:35:38.325Z] [INFO] 
+[2026-11-03T12:35:38.325Z] [INFO] --- jar:3.1.2:jar (default-jar) @ mini-inventory ---
+[2026-11-03T12:35:53.093Z] [INFO] Building jar: /var/jenkins_home/workspace/Mini-Inventory/target/mini-inventory.jar
+[2026-11-03T12:35:53.094Z] [INFO] 
+[2026-11-03T12:35:53.094Z] [INFO] --- shade:3.6.0:shade (default) @ mini-inventory ---
+[2026-11-03T12:35:53.656Z] [INFO] Including com.google.code.gson:gson:jar:2.11.0 in the shaded jar.
+[2026-11-03T12:35:53.657Z] [INFO] Including com.google.errorprone:error_prone_annotations:jar:2.27.0 in the shaded jar.
+[2026-11-03T12:35:53.657Z] [WARNING] error_prone_annotations-2.27.0.jar, gson-2.11.0.jar, mini-inventory.jar define 1 overlapping resource: 
+[2026-11-03T12:35:53.657Z] [WARNING]   - META-INF/MANIFEST.MF
+[2026-11-03T12:35:53.657Z] [WARNING] error_prone_annotations-2.27.0.jar, gson-2.11.0.jar define 1 overlapping classes: 
+[2026-11-03T12:35:53.657Z] [WARNING]   - META-INF.versions.9.module-info
+[2026-11-03T12:35:53.657Z] [WARNING] maven-shade-plugin has detected that some files are
+[2026-11-03T12:35:53.657Z] [WARNING] present in two or more JARs. When this happens, only one
+[2026-11-03T12:35:53.657Z] [WARNING] single version of the file is copied to the uber jar.
+[2026-11-03T12:35:53.657Z] [WARNING] Usually this is not harmful and you can skip these warnings,
+[2026-11-03T12:35:53.657Z] [WARNING] otherwise try to manually exclude artifacts based on
+[2026-11-03T12:35:53.657Z] [WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[2026-11-03T12:35:53.657Z] [WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[2026-11-03T12:35:53.657Z] [INFO] Replacing original artifact with shaded artifact.
+[2026-11-03T12:35:53.657Z] [INFO] Replacing /var/jenkins_home/workspace/Mini-Inventory/target/mini-inventory.jar with /var/jenkins_home/workspace/Mini-Inventory/target/mini-inventory-1.0.0-shaded.jar
+[2026-11-03T12:35:53.657Z] [INFO] ------------------------------------------------------------------------
+[2026-11-03T12:35:53.657Z] [INFO] BUILD SUCCESS
+[2026-11-03T12:35:53.657Z] [INFO] ------------------------------------------------------------------------
+[2026-11-03T12:35:53.657Z] [INFO] Total time:  19.949 s
+[2026-11-03T12:35:53.657Z] [INFO] Finished at: 2026-11-03T12:35:53Z
+[2026-11-03T12:35:53.657Z] [INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] junit
+[2026-11-03T12:35:54.359Z] Recording test results
+[2026-11-03T12:35:54.537Z] [Checks API] No suitable checks publisher found.
+[Pipeline] archiveArtifacts
+[2026-11-03T12:35:54.639Z] Archiving artifacts
+[2026-11-03T12:35:54.660Z] Recording fingerprints
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

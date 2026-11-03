@@ -1,0 +1,9 @@
+[program:inventory]
+command=/usr/bin/java -Xms16m -Xmx96m -jar {{ app_directory }}/app.jar
+directory={{ app_directory }}
+environment=APP_PORT="{{ app_port }}"
+autostart=true
+autorestart=true
+startsecs=2
+stdout_logfile=/var/log/inventory.out.log
+stderr_logfile=/var/log/inventory.err.log

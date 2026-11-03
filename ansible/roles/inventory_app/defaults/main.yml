@@ -1,0 +1,4 @@
+---
+app_port: 8080
+app_directory: /opt/mini-inventory
+artifact_source: /workspace/target/mini-inventory.jar

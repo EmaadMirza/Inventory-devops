@@ -1,0 +1,36 @@
+name: mini-inventory-lab
+services:
+  jenkins:
+    build: ./infra/jenkins
+    ports: ["127.0.0.1:8081:8080"]
+    environment:
+      JAVA_OPTS: -Xms128m -Xmx512m
+    mem_limit: 1g
+    volumes: ["jenkins-data:/var/jenkins_home"]
+    profiles: [ci]
+  inventory-target:
+    build:
+      context: .
+      dockerfile: infra/ansible-target/Dockerfile
+    volumes: ["./.secrets:/keys:ro"]
+    ports: ["127.0.0.1:8082:8080"]
+    mem_limit: 384m
+    profiles: [ansible]
+  ansible:
+    build: ./infra/ansible-controller
+    volumes: ["./:/workspace:ro", "./.secrets:/keys:ro"]
+    mem_limit: 384m
+    profiles: [ansible]
+    command: ["-i", "inventory.ini", "playbook.yml"]
+  maven:
+    image: maven:3.9-eclipse-temurin-17
+    working_dir: /workspace
+    volumes: ["./:/workspace", "maven-data:/root/.m2"]
+    environment:
+      MAVEN_OPTS: -Xmx256m
+    mem_limit: 512m
+    profiles: [build]
+    command: ["mvn", "-B", "-ntp", "clean", "verify"]
+volumes:
+  jenkins-data:
+  maven-data:

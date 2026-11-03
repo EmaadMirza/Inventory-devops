@@ -1,0 +1,7 @@
+.git
+.lab
+evidence
+reports
+.secrets
+target/*
+!target/mini-inventory.jar

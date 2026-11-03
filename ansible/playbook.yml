@@ -1,0 +1,7 @@
+---
+- name: Configure Mini Inventory server
+  hosts: inventory_servers
+  vars:
+    app_port: 8080
+  roles:
+    - inventory_app

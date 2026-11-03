@@ -1,0 +1,8 @@
+---
+- name: Restart inventory service
+  ansible.builtin.shell: |
+    set -eu
+    supervisorctl reread
+    supervisorctl update
+    supervisorctl restart inventory
+  changed_when: true

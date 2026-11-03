@@ -43,7 +43,7 @@ Inventory is process-local and resets on restart. Replicas do not share a databa
 Evidence contains actual logs and unaltered screenshots. STATUS.md distinguishes completed and pending work. Reports must only claim observed results. Coordinator invitation remains deferred.
 
 ## Deliverable files
-- Component 1 report (review draft until Jenkins browser screenshots are added): output/pdf/Emaad-Mirza-Component-1-CI.pdf
+- Component 1 report: output/pdf/Emaad-Mirza-Component-1-CI.pdf
 - Component 2 report: output/pdf/Emaad-Mirza-Component-2-Deployment.pdf
 - Source package: source-package.zip (source, reports, evidence, runnable JAR and Git history bundle; excludes secrets/runtimes).
 - Repository identity: repo_link.txt
@@ -53,4 +53,6 @@ For a fresh checkout, run `python scripts/setup-secrets.py` before starting Jenk
 
 Kubernetes reproduction uses `powershell -File scripts/setup-kind.ps1`, then Kind cluster creation with `--kubeconfig .lab/kubeconfig` and the pinned v1.36.4 node digest from the report. `powershell -File scripts/verify-kubernetes.ps1` exports a single-platform image and imports it locally inside this lab's node before rollout/scaling. This avoids the streaming import that stalled on this machine. Use `kubectl --kubeconfig .lab/kubeconfig --context kind-inventory-lab ...` throughout. Resume a stopped lab node with `docker start inventory-lab-control-plane` and wait for API readiness.
 
-Browser automation could not verify the browser URL. Jenkins UI screenshots remain outstanding; the Component 1 cover states this clearly. No unexecuted step is marked complete. The source package is a checkpoint until that evidence is inserted.
+Jenkins UI screenshots were captured on 4 November 2026 from the live server using Playwright and the already-installed Google Chrome in an isolated headless context. This is separate from controlling existing browser tabs through the unavailable desktop browser connector. No browser download or desktop security change was needed. The evidence shows build #2's SCM cause, archived JAR, seven passing tests, repository/branch configuration and polling schedule. Capture timestamps and URLs are in evidence/jenkins-browser-provenance.json; the displayed build executed on 3 November. Both reports and the source package are finalized.
+
+To recapture the Jenkins UI, run `python -X utf8 scripts/capture-jenkins.py` with Python Playwright and Google Chrome installed. The script reads only this lab's localhost Jenkins pages and does not submit configuration changes.

@@ -54,6 +54,9 @@ def screenshot(story, name, caption):
     story.append(Image(str(path), width=width * factor, height=height * factor))
     story.append(Spacer(1, 10))
     story.append(Paragraph("Original screenshot: evidence/" + escape(name) + ". Embedded without alteration; zoom to inspect command output.", styles["CaptionSmall"]))
+    if name.startswith("jenkins-browser-"):
+        provenance = json.loads(read("evidence/jenkins-browser-provenance.json"))
+        story.append(Paragraph("Live Jenkins page captured with Playwright and installed Google Chrome in headless mode. Capture time: " + escape(provenance["captured_local"]) + ". The displayed build executed on 3 November 2026.", styles["CaptionSmall"]))
 
 def table(story, rows):
     wrapped = [[Paragraph(escape(str(cell)), styles["BodyText"]) for cell in row] for row in rows]
@@ -102,9 +105,10 @@ assert "changed=0" in read("evidence/ansible-run-2.txt")
 pods = json.loads(read("evidence/kubernetes-pods-3.json"))
 assert len(pods["items"]) == 3
 browser_shots = sorted((ROOT / "evidence").glob("jenkins-browser-*.png"))
+browser_complete = all((ROOT / "evidence" / name).exists() for name in ["jenkins-browser-1-build.png", "jenkins-browser-2-tests.png", "jenkins-browser-3-config.png", "jenkins-browser-4-pipeline.png", "jenkins-browser-5-polling.png"])
 
 one = []
-cover(one, "Component 1: Build and Continuous Integration", "Java REST API, Git workflow, Maven testing and automatic Jenkins SCM builds", pending=not browser_shots)
+cover(one, "Component 1: Build and Continuous Integration", "Java REST API, Git workflow, Maven testing and automatic Jenkins SCM builds", pending=not browser_complete)
 heading(one, "Abstract")
 para(one, "A small inventory REST service was developed in Java and packaged as an executable Maven JAR. Git preserved a real feature branch and merge. Jenkins checked out the GitHub repository, ran automated tests, packaged the service and archived its artifact. A later documentation push was detected automatically by SCM polling. All seven automated tests passed; live JAR and Docker HTTP checks returned the expected success and error responses.")
 heading(one, "Introduction")
@@ -140,10 +144,13 @@ for name, caption in [("terminal-Git.png", "Evidence: real Git merge and preserv
                       ("terminal-Maven.png", "Evidence: live Maven verification")]:
     screenshot(one, name, caption)
 for shot in browser_shots:
-    screenshot(one, shot.name, "Evidence: genuine Jenkins browser view")
+    if shot.name == 'jenkins-browser-3-config.png':
+        continue  # Full-page original is retained; use readable viewport details in the PDF.
+    captions = {"jenkins-browser-1-build.png":"Evidence: SCM-triggered success and archived JAR", "jenkins-browser-2-tests.png":"Evidence: seven tests passing in Jenkins", "jenkins-browser-4-pipeline.png":"Evidence: GitHub SCM pipeline configuration", "jenkins-browser-5-polling.png":"Evidence: automatic SCM polling schedule"}
+    screenshot(one, shot.name, captions.get(shot.name,"Evidence: genuine Jenkins browser view"))
 one.append(PageBreak())
 heading(one, "Conclusion")
-para(one, "The API, executable artifact, feature workflow and automatic SCM-triggered CI were executed successfully. The results demonstrate tested changes flowing from GitHub to a published Jenkins artifact. Inventory remains process-local and is unsuitable for shared state across replicas; a production version should use a shared database and authenticated API access. The evidence checkpoint on the cover states any remaining browser screenshot limitation.")
+para(one, "The API, executable artifact, feature workflow and automatic SCM-triggered CI were executed successfully. The results demonstrate tested changes flowing from GitHub to a published Jenkins artifact. Genuine browser-rendered Jenkins evidence shows the SCM build cause, archived JAR, test results and job configuration. Inventory remains process-local and is unsuitable for shared state across replicas; a production version should use a shared database and authenticated API access.")
 refs(one, [("Apache Maven lifecycle", "https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html"),
            ("Jenkins Pipeline syntax and pollSCM", "https://www.jenkins.io/doc/book/pipeline/syntax/"),
            ("Jenkins Java support", "https://www.jenkins.io/doc/book/platform-information/support-policy-java/"),

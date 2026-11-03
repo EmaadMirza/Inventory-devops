@@ -1,0 +1,47 @@
+{
+  "captured_utc": "2026-11-03T19:56:31.216748+00:00",
+  "captured_local": "2026-11-04T01:26:31.218671+05:30",
+  "method": "Playwright with installed Google Chrome, headless, isolated temporary context",
+  "source": "Live Jenkins HTTP pages; no mocked responses or image alterations",
+  "build_execution_date": "2026-11-03",
+  "pages": [
+    {
+      "url": "http://127.0.0.1:18081/job/Mini-Inventory/2/",
+      "screenshot": "jenkins-browser-1-build.png",
+      "checks": [
+        "Success",
+        "SCM cause",
+        "archived JAR"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:18081/job/Mini-Inventory/2/testReport/",
+      "screenshot": "jenkins-browser-2-tests.png",
+      "checks": [
+        "7 tests passing",
+        "0 failed",
+        "0 skipped"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:18081/job/Mini-Inventory/configure",
+      "screenshot": "jenkins-browser-3-config.png"
+    },
+    {
+      "url": "http://127.0.0.1:18081/job/Mini-Inventory/configure",
+      "screenshot": "jenkins-browser-4-pipeline.png",
+      "checks": [
+        "GitHub URL",
+        "main branch",
+        "Jenkinsfile"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:18081/job/Mini-Inventory/configure",
+      "screenshot": "jenkins-browser-5-polling.png",
+      "checks": [
+        "once-per-minute SCM polling"
+      ]
+    }
+  ]
+}

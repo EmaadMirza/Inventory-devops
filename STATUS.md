@@ -1,4 +1,4 @@
-﻿# Execution checkpoint - 3 November 2026
+# Completed assignment - 4 November 2026
 
 ## Verified execution
 - Docker client/server access works. No Docker permission changes, API exposure, or host-wide Docker configuration changes.
@@ -14,13 +14,13 @@
 - Kubernetes Deployment and Service executed. Scaling 3 Ready -> 5 Ready -> 3 Ready verified twice (second run retook screenshots). Service API and each final replica health verified. Startup/readiness/liveness probes present.
 - Streaming image import stalled; single-platform archive plus node-local containerd --local import succeeded. No Docker settings changed. Initial unsuccessful transcripts retained.
 - Genuine Git/Maven/Docker/Ansible/Kubernetes terminal screenshots inspected. Wrong foreground captures rejected into ignored .lab, excluded from deliverables.
-- Two PDF reports generated and visually reviewed: Component 1 10 pages; Component 2 13 pages. Component 1 is explicitly a review draft pending Jenkins browser screenshots.
+- Two separate PDF reports finalized with explanations, code/configuration, enhancement rationale, actual results, genuine screenshots, conclusions and references.
 - Storage attribution saved in evidence/disk-usage.json: approximately 7.59 decimal GB assignment logical usage, excluding pre-existing/shared data and avoiding shared-layer double-counting. Snapshot precedes final source ZIP.
 
-## Remaining genuine blocker
-Browser automation stopped because it could not verify the current browser URL on Windows. Browser UI input stopped. Genuine Jenkins browser screenshots remain pending. API/terminal evidence is not represented as browser screenshots. Component 1 must be regenerated with those screenshots before claiming the entire assignment complete.
+## Final browser evidence
+The existing-browser connector was unavailable, but CLI browser testing worked. Playwright 1.63.0 reused installed Google Chrome in an isolated headless context. Genuine live Jenkins UI screenshots were captured on 4 November, showing the historical 3 November build #2, its SCM-triggered cause, archived JAR, seven passing tests and current SCM/polling configuration. No responses were mocked and no screenshot content was fabricated. The configuration form was read without saving changes. Timestamps, URLs and capture method are recorded in evidence/jenkins-browser-provenance.json.
 
-Manual next step: with this lab's Jenkins running, open http://127.0.0.1:18081/job/Mini-Inventory/2/ in a normal browser window and signal readiness for capture. Also capture its Test Result page and archived artifact section.
+Both reports and source-package.zip are finalized. The ZIP includes the runnable JAR and a verified complete Git history bundle preserving main and feature/low-stock-filter; it excludes credentials and runtime caches. No assignment requirements remain unexecuted. Coordinator invitation remains deferred by user instruction.
 
 ## Isolation and preservation
 Stages ran sequentially. Kubernetes and Ansible target are stopped to recover RAM; their data and configuration remain. Jenkins may be started alone for browser evidence. The cluster can resume with docker start inventory-lab-control-plane; wait for its API before using the dedicated kubeconfig.
